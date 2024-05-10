@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
@@ -7,7 +6,7 @@ import addTodoToDB from "./addTodo";
 import getTodos from "./getTodos";
 import deleteTodo from "./deleteTodo";
 import updateTodo from "./updateTodo";
-// Your web app's Firebase configuration
+// configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC7jtPLUhGKzhGc4waNlt1qZYXbDxpKKLU",
   authDomain: "todoauthapp-69960.firebaseapp.com",
@@ -18,9 +17,9 @@ const firebaseConfig = {
   appId: "1:4003613422:web:9a1eabff847f2c45aa81ff"
 };
 
-// Initialize Firebase
+//Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getDatabase(firebaseApp);
 const auth = getAuth(firebaseApp);
 
-export  { db, auth , addTodoToDB , SignUserOut , getTodos ,deleteTodo ,updateTodo}; // Exporting db and auth objects
+export  { db, auth , addTodoToDB , SignUserOut , getTodos ,deleteTodo ,updateTodo}; 

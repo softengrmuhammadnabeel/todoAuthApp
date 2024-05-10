@@ -6,7 +6,6 @@ const getTodos = async (userId) => {
         const todosRef = ref(db, `todos/${userId}`);
         const todosSnapshot = await get(query(todosRef));
         if (todosSnapshot.exists()) {
-            // Convert the snapshot to an array of todos
             const todos = [];
             todosSnapshot.forEach((childSnapshot) => {
                 const todo = childSnapshot.val();
@@ -14,11 +13,11 @@ const getTodos = async (userId) => {
             });
             return todos;
         } else {
-            // No todos found for the user
+            console.log("No todos found for the user....");
             return [];
         }
     } catch (error) {
-        console.error("Error getting todos:", error);
+        console.error("Error ingetting todos:", error);
         throw error;
     }
 };

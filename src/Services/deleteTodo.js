@@ -5,12 +5,13 @@ const deleteTodo = async (userId,todoId) => {
     const todoRef = ref(db, `todos/${userId}/${todoId}`);
     console.log("Todo ID:", todoId);
 
-    console.log("Deleting todo with ID:", todoId); // Log the todoId to ensure it's correct
-    console.log("Todo reference:", todoRef); // Log the todo reference to ensure it's correct
+    console.log("Deleting todo with ID:", todoId); 
+    console.log("Todo reference:", todoRef);
     try {
         await remove(todoRef);
         console.log("Todo deleted successfully!");
-    } catch (error) {
+    } 
+    catch (error) {
         console.error("Error deleting todo:", error);
     }
 };

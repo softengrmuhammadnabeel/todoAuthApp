@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import updateTodoInDB from '../../Services/updateTodo.js'
 import deleteTodo from '../../Services/deleteTodo.js';
+import GreenClickButton from '../../Buttons/GreenClickButton.jsx';
+import RedClickButton from '../../Buttons/RedClickButton.jsx';
+import BlueClickButton from '../../Buttons/BlueClickButton.jsx';
 
 
 const Todo = ({ userId, todoId, title: initialTitle, description: initialDescription }) => {
@@ -9,23 +12,26 @@ const Todo = ({ userId, todoId, title: initialTitle, description: initialDescrip
     const [editedTitle, setEditedTitle] = useState(initialTitle);
     const [editedDescription, setEditedDescription] = useState(initialDescription);
 
+    // fn of dlt 
     const handleDelete = async () => {
         await deleteTodo(userId, todoId.id);
     };
 
+    // fn of updating btns 
     const handleUpdateButtonClick = () => {
         setEditMode(true);
     };
-
+    
+    // fn of updat in db 
     const handleSaveButtonClick = async () => {
         console.log("todo id ", todoId);
-        // Call the updateTodoInDB function
+        
         updateTodoInDB(userId, todoId.id, editedTitle, editedDescription);
         setEditMode(false);
     };
 
     return (
-        <div className='bg-gray-300 w-full p-4 mb-4 border rounded-lg'>
+        <div className='bg-zinc-800 text-white w-full p-4 mb-4 border rounded-lg'>
             <div className='flex flex-1'>
                 <div className='cursor-pointer flex flex-col flex-1'>
                     {editMode ? (
@@ -34,12 +40,12 @@ const Todo = ({ userId, todoId, title: initialTitle, description: initialDescrip
                                 type="text"
                                 value={editedTitle}
                                 onChange={(e) => setEditedTitle(e.target.value)}
-                                className=' mr-2 px-2 mb-1 outline outline-1 rounded-md outline-zinc-500 py-1'
+                                className=' mr-2 px-2 mb-1 outline outline-1 rounded-md text-white bg-zinc-600 outline-zinc-700 py-1'
                             />
                             <input
                                 value={editedDescription}
                                 onChange={(e) => setEditedDescription(e.target.value)}
-                                className=' mr-2 px-2 mb-1 outline outline-1 rounded-md outline-zinc-500 py-1'
+                                className=' mr-2 px-2 mb-1 outline outline-1 rounded-md text-white bg-zinc-600 outline-zinc-700 py-1'
                             />
                         </>
                     ) : (
@@ -48,15 +54,15 @@ const Todo = ({ userId, todoId, title: initialTitle, description: initialDescrip
                 </div>
                 <div className='gap-5 flex'>
                     {editMode ? (
-                        <button className='bg-blue-600 px-3 py-1 my-auto rounded-md outline-none hover:cursor-pointer active:duration-300 text-white font-medium' onClick={handleSaveButtonClick}>Save</button>
+                        <BlueClickButton className=' px-3 py-1 my-auto rounded-md outline-none hover:cursor-pointer active:duration-300 text-white font-medium' onClick={handleSaveButtonClick}>Save</BlueClickButton>
                     ) : (
-                        <button className='bg-blue-600 px-3 py-1 my-auto rounded-md outline-none hover:cursor-pointer active:duration-300 text-white font-medium' onClick={handleUpdateButtonClick}>Update</button>
+                        <GreenClickButton className=' px-3 py-1 my-auto rounded-md outline-none hover:cursor-pointer active:duration-300 text-white font-medium' onClick={handleUpdateButtonClick}>Update</GreenClickButton>
                     )}
-                    <button className='bg-blue-600 px-3 py-1 rounded-md my-auto outline-none hover:cursor-pointer active:duration-300 text-white font-medium' onClick={handleDelete}>Delete</button>
+                    <RedClickButton className=' px-3 py-1 rounded-md my-auto outline-none hover:cursor-pointer active:duration-300 text-white font-medium' onClick={handleDelete}>Delete</RedClickButton>
                 </div>
             </div>
             {open && (
-                <div className='bg-gray-300 mt-2 font-mono font-medium' id='description'>
+                <div className='bg-zinc-700 text-white rounded-md px-2  mt-2 font-mono font-medium' id='description'>
                     <p> Description : {initialDescription}</p>
                 </div>
             )}

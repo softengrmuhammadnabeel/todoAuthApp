@@ -8,7 +8,8 @@ const SignUserOut = async () =>{
         console.log("SignOut Successful ...");
         window.location.href = '/signin';
     }).catch((error) => {
-        console.log('Error Occured during signout :', error);
+        console.log('Error Occcured in signout :', error);
+        
     });
 }
     export default SignUserOut;
