@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function GreenClickButton({ children }) {
+function GreenClickButton({ children, onClick }) {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -8,6 +8,11 @@ function GreenClickButton({ children }) {
     setTimeout(() => {
       setClicked(false);
     }, 300);
+
+    // If onClick prop is provided, call it
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (

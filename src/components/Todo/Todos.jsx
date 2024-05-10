@@ -10,7 +10,7 @@ const Todos = () => {
     const [todos, setTodos] = useState([]);
     const [UserName, setUserName] = useState('');
     const [todoToUpdate, setTodoUpdate] = useState('');
-    const [success , setSuccess] =useState(false);
+    const [success, setSuccess] = useState(false);
 
 
     const userName = localStorage.getItem('UserName');
@@ -49,11 +49,11 @@ const Todos = () => {
         const userId = currentUser.uid;
         addTodoToDB(userId, Title, Description);
         setSuccess(true)
-        setTimeout(()=>{
+        setTimeout(() => {
             setSuccess(false)
         }, 2000)
         // clearing inputs
-        setTitle(''); 
+        setTitle('');
         setDescription('');
     };
 
@@ -73,22 +73,18 @@ const Todos = () => {
                     <RedClickButton className=' rounded-md text-white items-end text-sm px-2 py-2 my-auto cursor-pointer' onClick={handleSignOut}>SignOut</RedClickButton>
                 </div>
                 <h1 className='text-center text-4xl font-bold mb-4'>ToDo App</h1>
+
+
                 <div className='p-2 h-auto flex flex-col flex-wrap justify-center mb-10'>
                     <input type="text" placeholder='Enter Todo' className='rounded-md mx-auto px-3 py-2 min-w-96 outline outline-1 mb-2' value={Title} onChange={(e) => setTitle(e.target.value)} />
                     <input type="text" placeholder='Enter Todo Description' className='rounded-md mx-auto px-3 py-2 min-w-96 outline outline-1 mb-2' value={Description} onChange={(e) => setDescription(e.target.value)} />
-                    
-                    <div className='flex w-full bg-red-300 py-2 justify-center '>
-                    {!todoToUpdate &&
-                        <BlueClickButton className=' rounded-md w-full  text-white  mx-auto cursor-pointer' onClick={handleAddTodo}>
-                            Add Todo</BlueClickButton>
-                    }
-                    </div>
-
+                    <BlueClickButton className=' rounded-md w-full py-2 px-4  text-white  mx-auto cursor-pointer' onClick={handleAddTodo}>Add Todo</BlueClickButton>
                 </div>
+
                 <div className='w-full h-1 bg-black border b-t-2'></div>
                 <div id='here' className='p-3 duration-150 h-screen overflow-auto'>
                     {todos.map((todo, index) => (
-                        <Todo key={index} userId={userId} todoId={todo} title={todo.title} description={todo.description}   />
+                        <Todo key={index} userId={userId} todoId={todo} title={todo.title} description={todo.description} />
                     ))}
                 </div>
 

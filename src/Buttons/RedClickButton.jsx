@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function RedClickButton({ children }) {
+function RedClickButton({ children, onClick }) {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -9,6 +9,11 @@ function RedClickButton({ children }) {
     setTimeout(() => {
       setClicked(false);
     }, 300);
+
+    // If onClick prop is provided, call it
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (

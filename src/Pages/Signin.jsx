@@ -17,7 +17,6 @@ const Signin = () => {
         
         const fetchUserName = async (userId) => {
             try {
-                e.preventDefault();
             console.log('UserId coming is : ', userId);
             const usersRef = ref(db, 'users/' + userId);
             await onValue(usersRef, (snapshot) => {
@@ -84,7 +83,7 @@ const Signin = () => {
                     <label htmlFor="" className=' justify-start flex font-medium'>Password</label>
                     <input type="password" value={password} placeholder='Enter password' className='rounded-md outline outline-1 px-3 py-2 mb-3 w-full items-center' onChange={(e) => setPassword(e.target.value)} />
 
-                    <BlueClickButton className='w-full bg-blue-500 rounded-md py-2  text-white text-lg font-medium mb-3' onClick={handleSignin}>Login</BlueClickButton>
+                    <button className='w-full bg-blue-500 rounded-md py-2  text-white text-lg font-medium mb-3' onClick={handleSignin}>Login</button>
                 </form>
                 {error && <p className='font-medium m-b-2 text-md text-red-500 bg-red-200 rounded-md px-2'>{error}</p>}
                 <p className='font-medium text-sm m-t-2 text-red-500 flex cursor-pointer mt-3' onClick={handleRoute}>Not Registered? Register Now</p> 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function BlueClickButton({ children }) {
+function BlueClickButton({ children, onClick }) {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -9,11 +9,16 @@ function BlueClickButton({ children }) {
     setTimeout(() => {
       setClicked(false);
     }, 300);
+
+    // If onClick prop is provided, call it
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
     <button
-      className={`py-2 px-4  rounded-md text-white  font-semibold transition-background duration-300 ${clicked ? 'bg-blue-700' : 'bg-blue-500'}`}
+      className={`py-2 px-4 rounded-md text-white font-semibold transition-background duration-300 ${clicked ? 'bg-blue-700' : 'bg-blue-500'}`}
       onClick={handleClick}
     >
       {children}
