@@ -9,7 +9,6 @@ const Todos = () => {
     const [Description, setDescription] = useState('');
     const [todos, setTodos] = useState([]);
     const [UserName, setUserName] = useState('');
-    const [todoToUpdate, setTodoUpdate] = useState('');
     const [success, setSuccess] = useState(false);
 
 

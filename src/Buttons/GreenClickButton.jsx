@@ -9,7 +9,6 @@ function GreenClickButton({ children, onClick }) {
       setClicked(false);
     }, 300);
 
-    // If onClick prop is provided, call it
     if (onClick) {
       onClick();
     }

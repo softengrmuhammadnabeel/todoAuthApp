@@ -8,7 +8,7 @@ import Todo from './components/Todo/Todo'
 
 
 // Its a global access func to use in overall app so we use in it in APP.js 
-
+// for Usercontext
 function App() {
 
   

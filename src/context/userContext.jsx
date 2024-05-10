@@ -13,4 +13,4 @@
 //   );
 // };
 
-// Used in Firestore 
+// Used in Firestore not in realtime db 

@@ -5,12 +5,10 @@ function BlueClickButton({ children, onClick }) {
 
   const handleClick = () => {
     setClicked(true);
-    // Reset the click state after a short delay to allow for animation
     setTimeout(() => {
       setClicked(false);
     }, 300);
 
-    // If onClick prop is provided, call it
     if (onClick) {
       onClick();
     }
